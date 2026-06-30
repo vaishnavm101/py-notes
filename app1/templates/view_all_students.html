@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View all students</title>
+</head>
+<body>
+    <h1>View all students</h1>
+    {% for student in objs %}
+            <h3>Name: {{student.name}} Age: {{student.age}}</h3>
+    {% endfor %}
+</body>
+</html>

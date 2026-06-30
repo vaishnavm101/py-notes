@@ -1,12 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Student
 
 # Create your views here.
 
 def base_route(request):
     print("Request came to the base route....")
     # return HttpResponse("<h1>Heading</h1>")
+   
     return render(request, "home.html")
+
+def view_all_students(request):
+    objs = Student.objects.all()
+    print(f"Objs: {objs}")
+    data = {
+        "objs": objs
+    }
+    return render(request, "view_all_students.html", context=data)
+
+
+
+def add_student(request):
+    return render(request, "add_student.html")
     
 
 def get_students(request):
