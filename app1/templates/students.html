@@ -7,7 +7,13 @@
 </head>
 <body>
     <h1>Students list</h1>
-    
-    <h2>Student name: {{student1}}</h2>
+<!--     
+    {% for student in students %}
+    <h2>Name: </h2><h1>{{student}}</h1>
+    {% endfor %} -->
+
+    {% for key,value in student.items %}
+        <h2> Key: {{key}} Value: {{value}}</h2>
+    {% endfor %}
 </body>
 </html>

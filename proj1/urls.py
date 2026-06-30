@@ -21,5 +21,6 @@ from app1 import views
 urlpatterns = [
     path('admin/', admin.site.urls), # http://localhost:8000/admin/
     path('', views.base_route), #http://localhost:8000/
-    path("students/", views.get_students)
+    path("students/", views.get_students),
+    path("students/<str:student_name>", views.get_student_detail)
 ]

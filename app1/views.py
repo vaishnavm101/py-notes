@@ -11,8 +11,24 @@ def base_route(request):
 
 def get_students(request):
     # students = ["Adesh", "Yusuf", "Raj"]
-    student1 = "Yash"
+    student = {
+        "name": "Adesh",
+        "marks": [70, 87,55]
+    }
     context = {
-        "student1": student1
+        "student": student
     }
     return render(request, "students.html", context=context)
+
+
+def get_student_detail(request, student_name):
+    students = {"yusuf": "Yusuf Shaikh", "adesh": "Adesh T"}
+    if student_name in students:
+        context = {
+            "student": students[student_name]
+        }
+        return render(request, "student_details.html", context=context)
+    context = {
+        "student": "Not found"
+    }
+    return render(request, "student_details.html", context)
