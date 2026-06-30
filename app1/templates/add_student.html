@@ -10,9 +10,15 @@
     <form method="post"> 
         {% csrf_token %}
         <input type="text" name="student_name" placeholder="Enter student name"> <br> <br>
-        <input type="number" name="age" placeholder="Enter student age" > <br> <br>
+        <input type="number" name="student_age" placeholder="Enter student age" > <br> <br>
         <input type="submit" value="Add Student">
     </form>
+
+    {% if success %}
+    <h3>{{message}}</h3>
+    {% else %}
+    <h3>{{message}}</h3>
+    {% endif %}
 
 </body>
 </html>

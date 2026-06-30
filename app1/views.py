@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Student
 
@@ -21,6 +21,21 @@ def view_all_students(request):
 
 
 def add_student(request):
+    if request.method == "POST":
+        name = request.POST.get("student_name")
+        age = request.POST.get("student_age")
+        student = Student.objects.create(
+            name=name,
+            age=age
+        )
+        if not student:
+            context = {
+                "success": False,
+                "message": "Error in creating student!"
+            }
+            return render(request, "add_student.html", context)
+        return redirect("view_all_students")
+
     return render(request, "add_student.html")
     
 
@@ -35,15 +50,9 @@ def get_students(request):
     }
     return render(request, "students.html", context=context)
 
-
-def get_student_detail(request, student_name):
-    students = {"yusuf": "Yusuf Shaikh", "adesh": "Adesh T"}
-    if student_name in students:
-        context = {
-            "student": students[student_name]
-        }
-        return render(request, "student_details.html", context=context)
+def get_student_detail(request, id):
+    student = get_object_or_404(Student, id=id)
     context = {
-        "student": "Not found"
+        "student": student
     }
     return render(request, "student_details.html", context)

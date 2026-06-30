@@ -8,7 +8,7 @@
 <body>
     <h1>View all students</h1>
     {% for student in objs %}
-            <h3>Name: {{student.name}} Age: {{student.age}}</h3>
+             <h4><a href="/students/{{student.id}}">{{student.name}}</a></h4>
     {% endfor %}
 </body>
 </html>
